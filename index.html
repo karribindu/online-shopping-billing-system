@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Mall Billing System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Shopping Mall Billing System</h2>
+
+    <input type="text" id="customer" placeholder="Customer Name">
+
+    <select id="product">
+        <option value="">Select Product</option>
+        <option value="Mobile">Mobile - ₹15000</option>
+        <option value="Laptop">Laptop - ₹50000</option>
+        <option value="Headphones">Headphones - ₹2000</option>
+    </select>
+
+    <input type="number" id="quantity" placeholder="Quantity">
+
+    <button onclick="generateBill()">Generate Bill</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function generateBill() {
+
+    let customer = document.getElementById("customer").value;
+    let product = document.getElementById("product").value;
+    let quantity = document.getElementById("quantity").value;
+
+    if(customer==="" || product==="" || quantity==="") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let price = 0;
+
+    if(product==="Mobile")
+        price = 15000;
+    else if(product==="Laptop")
+        price = 50000;
+    else if(product==="Headphones")
+        price = 2000;
+
+    let total = price * quantity;
+
+    document.getElementById("result").innerHTML =
+        "<h3>Bill Generated Successfully!</h3>" +
+        "Customer: " + customer + "<br>" +
+        "Product: " + product + "<br>" +
+        "Quantity: " + quantity + "<br>" +
+        "Total Amount: ₹" + total;
+}
+</script>
+
+</body>
+</html>
